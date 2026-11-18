@@ -1,0 +1,16 @@
+ID_Processo,Nome_Processo,Setor,Periodicidade,Responsavel_Cargo,Data_Prevista,Status,Data_Conclusao,Evidencia_Anexo,Acao_Corretiva_Obs
+CQ-001,Controle Interno Nível 1 e 2 - Analisador Bioquímico,Bioquímica,Diário,Biomédico Rotina Bioq,2026-11-18,Concluído,2026-11-18 07:45,Mapa_Levey_Jennings_Cobas_1811.pdf,Dentro da faixa aceitável (1s).
+CQ-002,Monitoramento de Temperatura - Geladeira de Reagentes 01 (2-8°C),Geral,Diário,Técnico de Laboratório,2026-11-18,Concluído,2026-11-18 08:00,Log_Termometro_01.csv,Temperatura em 4.5°C conforme especificação.
+CQ-003,Monitoramento de Temperatura - Freezer de Amostras (-20°C),Geral,Diário,Técnico de Laboratório,2026-11-18,Concluído,2026-11-18 08:05,Log_Termometro_02.csv,Temperatura em -19.2°C conforme especificação.
+CQ-004,Controle Hematológico 3 Níveis (Baixo Normal Alto),Hematologia,Diário,Biomédico Rotina Hemato,2026-11-18,Em Progresso,,Lote_Hemato_Nov2026.pdf,Aguardando repetição do nível baixo para confirmação de plaquetas.
+CQ-005,Checagem de Branco de Reagente e Água Reagente Grau I,Bioquímica,Diário,Biomédico Rotina Bioq,2026-11-18,Pendente,,,Aguardando início do turno vespertino.
+CQ-006,Limpeza e Desproteinização do Analisador Hematológico,Hematologia,Semanal,Biomédico Líder Hemato,2026-11-17,Atrasado,,,Equipamento em uso contínuo de rotina urgente. Reprogramado para plantão noturno.
+CQ-007,Verificação e Regeneração do Sistema Deionizador de Água,Geral,Semanal,Técnico da Qualidade,2026-11-20,Pendente,,,Previsto para sexta-feira às 14h.
+CQ-008,Controle de Coloração de Lâminas (Wright/Giemsa),Hematologia,Semanal,Biomédico Rotina Hemato,2026-11-19,Pendente,,,Lâmina padrão reservada para teste matinal.
+CQ-009,Análise Crítica Mensal de Levey-Jennings e Regras de Westgard,Qualidade,Mensal,Gestor da Qualidade,2026-11-30,Pendente,,,Exportar relatórios estatísticos do software analítico.
+CQ-010,Inventário de Reagentes Críticos e Teste de Paralelismo de Novo Lote,Bioquímica,Mensal,Biomédico Líder Bioq,2026-11-15,Concluído,2026-11-14 16:30,Laudo_Paralelismo_Glicose_Ureia.pdf,Correlação R2 > 0.99 aprovada.
+CQ-011,Controle Externo de Qualidade (Proficiência PNCQ/Controllab),Imunologia,Mensal,Biomédico Rotina Imuno,2026-11-22,Em Progresso,,Protocolo_Envio_PNCQ.pdf,Amostras em processamento em duplicata.
+CQ-012,Calibração Semestral de Micropipetas Monocanal e Multicanal,Qualidade,Semestral,Responsável Técnico,2026-12-05,Pendente,,,Empresa credenciada RBC agendada para 05/12.
+CQ-013,Manutenção Preventiva Semestral - Analisador Quimioluminescência,Imunologia,Semanal,Engenheiro Clínico / Fornecedor,2026-11-10,Concluído,2026-11-10 11:20,Ordem_Servico_Manutencao_OS4829.pdf,Substituição de cânulas e mangueiras realizada com sucesso.
+CQ-014,Qualificação Térmica de Estufa de Microbiologia e Autoclave,Microbiologia,Semestral,Biomédico Microbiologia,2026-11-25,Pendente,,,Termopares calibrados posicionados para ciclo de validação.
+CQ-015,Recertificação de Termômetros Digitais Rastreáveis RBC,Qualidade,Anual,Gestor da Qualidade,2026-10-20,Concluído,2026-10-18 15:00,Certificados_Calibracao_RBC_2026.pdf,Todos os 12 instrumentos aprovados com incerteza calculada.
