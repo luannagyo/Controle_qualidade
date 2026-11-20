@@ -1,11 +1,11 @@
-# 🔬 LabQuality-Flow | Sistema de Gestão e Monitoramento de Controle de Qualidade Laboratorial
+# LabQuality-Flow | Sistema de Gestão e Monitoramento de Controle de Qualidade Laboratorial
 
 > **Projeto interdisciplinar integrando Biomedicina Diagnóstica e Sistemas de Informação.**  
 > Uma solução corporativa baseada no ecossistema **Microsoft 365** (Power BI, Power Automate, Microsoft Lists e Copilot) para rastreabilidade de processos de qualidade, manutenção de equipamentos e conformidade com normas regulatórias (**RDC 786/2023 da Anvisa**, **PALC**, **DICQ** e **ISO 15189**).
 
 ---
 
-## 📋 Sumário
+## Sumário
 1. [Contexto & Justificativa](#-contexto--justificativa)
 2. [Arquitetura da Solução](#-arquitetura-da-solução)
 3. [Modelo de Dados (Microsoft Lists)](#-modelo-de-dados-microsoft-lists)
@@ -16,7 +16,7 @@
 
 ---
 
-## 🎯 Contexto & Justificativa
+## Contexto & Justificativa
 
 Em um laboratório de análises clínicas, a garantia da qualidade analítica não depende apenas da perícia do profissional, mas do rigor na execução e registro de processos periódicos.
 
@@ -29,7 +29,7 @@ O **LabQuality-Flow** resolve esses desafios estruturando um fluxo digital integ
 
 ---
 
-## 🏗 Arquitetura da Solução
+## Arquitetura da Solução
 
 ```mermaid
 flowchart TD
@@ -133,7 +133,7 @@ CALCULATE(
 
 ---
 
-## 🔒 Privacidade de Dados & LGPD
+## Privacidade de Dados & LGPD
 
 > **Declaração de Conformidade Ética e de Privacidade:**  
 > Este projeto foi desenvolvido para fins educacionais e de portfólio profissional.  
@@ -142,7 +142,7 @@ CALCULATE(
 
 ---
 
-## 🚀 Como Executar o Projeto
+##  Como Executar o Projeto
 
 1. **Clonar o Repositório:**
    ```bash
@@ -158,6 +158,6 @@ CALCULATE(
 
 ---
 
-## 👩‍🔬 Autora
+## Autora
 **Biomédica & Graduanda em Sistemas de Informação**  
 Unindo saúde diagnóstica, governança de dados e tecnologia.
