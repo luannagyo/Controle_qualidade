@@ -1,22 +1,22 @@
-# 🔬 LabQuality-Flow | Sistema de Gestão e Monitoramento de Controle de Qualidade Laboratorial
+# LabQuality-Flow | Sistema de Gestão e Monitoramento de Controle de Qualidade Laboratorial
 
 > **Projeto interdisciplinar integrando Biomedicina Diagnóstica e Sistemas de Informação.**  
 > Uma solução corporativa baseada no ecossistema **Microsoft 365** (Power BI, Power Automate, Microsoft Lists e Copilot) para rastreabilidade de processos de qualidade, manutenção de equipamentos e conformidade com normas regulatórias (**RDC 786/2023 da Anvisa**, **PALC**, **DICQ** e **ISO 15189**).
 
 ---
 
-## 📋 Sumário
-1. [Contexto & Justificativa](#-contexto--justificativa)
-2. [Arquitetura da Solução](#-arquitetura-da-solução)
-3. [Modelo de Dados (Microsoft Lists)](#-modelo-de-dados-microsoft-lists)
-4. [Automação e Agente Copilot (Power Automate & Teams)](#-automação-e-agente-copilot)
-5. [Métricas e Inteligência Analítica (Power BI)](#-métricas-e-inteligência-analítica-power-bi)
-6. [Privacidade de Dados & LGPD (Privacy by Design)](#-privacidade-de-dados--lgpd)
-7. [Como Executar o Projeto Localmente](#-como-executar-o-projeto)
+## Sumário
+1. [Contexto & Justificativa](#contexto--justificativa)
+2. [Arquitetura da Solução](#arquitetura-da-solução)
+3. [Modelo de Dados (Microsoft Lists)](#modelo-de-dados-microsoft-lists)
+4. [Automação e Agente Copilot (Power Automate & Teams)](#automação-e-agente-copilot)
+5. [Métricas e Inteligência Analítica (Power BI)](#métricas-e-inteligência-analítica-power-bi)
+6. [Privacidade de Dados & LGPD (Privacy by Design)](#privacidade-de-dados--lgpd)
+7. [Como Executar o Projeto Localmente](#como-executar-o-projeto)
 
 ---
 
-## 🎯 Contexto & Justificativa
+## Contexto & Justificativa
 
 Em um laboratório de análises clínicas, a garantia da qualidade analítica não depende apenas da perícia do profissional, mas do rigor na execução e registro de processos periódicos.
 
@@ -29,7 +29,7 @@ O **LabQuality-Flow** resolve esses desafios estruturando um fluxo digital integ
 
 ---
 
-## 🏗 Arquitetura da Solução
+## Arquitetura da Solução
 
 ```mermaid
 flowchart TD
@@ -65,7 +65,7 @@ flowchart TD
 
 ---
 
-## 🗄 Modelo de Dados (Microsoft Lists)
+## Modelo de Dados (Microsoft Lists)
 
 A lista principal foi desenhada para atender aos requisitos de auditoria de acreditação laboratorial:
 
@@ -84,7 +84,7 @@ A lista principal foi desenhada para atender aos requisitos de auditoria de acre
 
 ---
 
-## 🤖 Automação e Agente Copilot
+## Automação e Agente Copilot
 
 ### Rotina Diária no Power Automate
 1. **Gatilho:** Recorrência diária às 07:00 (horário de abertura do laboratório).
@@ -93,8 +93,8 @@ A lista principal foi desenhada para atender aos requisitos de auditoria de acre
    Status ne 'Concluído' and Data_Prevista le '@{addDays(utcNow(), 2, 'yyyy-MM-dd')}'
    ```
 3. **Ação:** Envio de um **Adaptive Card** no canal do Microsoft Teams com as ações:
-   * 🟡 **Marcar como Em Progresso:** Notifica a equipe que o controle já está em processamento na bancada.
-   * 🟢 **Concluir:** Abre um pop-up simples para registrar a data/hora e anexar o laudo comprobatório.
+   * **Marcar como Em Progresso:** Notifica a equipe que o controle já está em processamento na bancada.
+   * **Concluir:** Abre um pop-up simples para registrar a data/hora e anexar o laudo comprobatório.
 
 ### Consultas com Copilot Agent
 Integrado ao Microsoft 365, o agente permite perguntas como:
@@ -103,7 +103,7 @@ Integrado ao Microsoft 365, o agente permite perguntas como:
 
 ---
 
-## 📊 Métricas e Inteligência Analítica (Power BI)
+## Métricas e Inteligência Analítica (Power BI)
 
 Fórmulas DAX utilizadas para compor os semáforos de conformidade:
 
@@ -133,7 +133,7 @@ CALCULATE(
 
 ---
 
-## 🔒 Privacidade de Dados & LGPD
+## Privacidade de Dados & LGPD
 
 > **Declaração de Conformidade Ética e de Privacidade:**  
 > Este projeto foi desenvolvido para fins educacionais e de portfólio profissional.  
@@ -142,7 +142,7 @@ CALCULATE(
 
 ---
 
-## 🚀 Como Executar o Projeto
+## Como Executar o Projeto
 
 1. **Clonar o Repositório:**
    ```bash
@@ -158,6 +158,6 @@ CALCULATE(
 
 ---
 
-## 👩‍🔬 Autora
+## Autora
 **Biomédica & Graduanda em Sistemas de Informação**  
 Unindo saúde diagnóstica, governança de dados e tecnologia.
