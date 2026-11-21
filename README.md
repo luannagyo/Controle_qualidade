@@ -33,7 +33,7 @@ O **LabQuality** resolve esses desafios estruturando um fluxo digital integrado 
 
 ```mermaid
 flowchart TD
-    subgraph ARMAZENAMENTO["1. Camada de Arquivos & Evidências"]
+    subgraph ARMAZENAMENTO["1. Camada de Arquivos e Evidências"]
         P[Pastas do SharePoint / Bancada]
         P1[(Laudos em PDF e Dados Brutos)]
         P2[(Certificados RBC e Mapas)]
@@ -47,14 +47,14 @@ flowchart TD
         P -->|Novo arquivo salvo| F1
     end
 
-    subgraph DADOS["3. Camada de Dados & Rastreabilidade"]
+    subgraph DADOS["3. Camada de Dados e Rastreabilidade"]
         A[Microsoft Lists / SharePoint List]
         A1[(Trilha de Auditoria & Versões)]
         F1 -->|Baixa Automática + Link do Laudo| A
         A --- A1
     end
 
-    subgraph INTERACAO["4. Camada de Notificação & IA"]
+    subgraph INTERACAO["4. Camada de Notificação e IA"]
         A -->|Consulta pendências| F2
         F2 -->|Vence em breve ou Atrasado| C[Adaptive Cards no Microsoft Teams]
         D[Copilot Studio / Copilot Agent]
