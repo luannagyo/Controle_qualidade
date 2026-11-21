@@ -1,4 +1,4 @@
-# LabQuality-Flow | Sistema de Gestão e Monitoramento de Controle de Qualidade Laboratorial
+# LabQuality| Sistema de Gestão e Monitoramento de Controle de Qualidade Laboratorial
 
 > **Projeto interdisciplinar integrando Biomedicina Diagnóstica e Sistemas de Informação.**  
 > Uma solução corporativa baseada no ecossistema **Microsoft 365** (Power BI, Power Automate, Microsoft Lists e Copilot) para rastreabilidade de processos de qualidade, manutenção de equipamentos e conformidade com normas regulatórias (**RDC 786/2023 da Anvisa**, **PALC**, **DICQ** e **ISO 15189**).
@@ -25,7 +25,7 @@ Frequentemente, esses controles são geridos através de cadernos de bancada, pr
 * **Sobrecarga operacional:** Risco de esquecimento durante picos de rotina na bancada.
 * **Vulnerabilidade em auditorias:** Dificuldade em recuperar evidências de calibrações passadas e ações corretivas frente a desvios das regras de Westgard.
 
-O **LabQuality-Flow** resolve esses desafios estruturando um fluxo digital integrado onde a tarefa é registrada, monitorada em tempo real e alertada proativamente via agente no Microsoft Teams.
+O **LabQuality** resolve esses desafios estruturando um fluxo digital integrado onde a tarefa é registrada, monitorada em tempo real e alertada proativamente via agente no Microsoft Teams.
 
 ---
 
@@ -33,34 +33,40 @@ O **LabQuality-Flow** resolve esses desafios estruturando um fluxo digital integ
 
 ```mermaid
 flowchart TD
-    subgraph DADOS["1. Camada de Dados & Rastreabilidade"]
-        A[Microsoft Lists / SharePoint]
-        A1[(Histórico de Alterações)]
-        A2[(Anexos: Laudos e Gráficos)]
+    subgraph ARMAZENAMENTO["1. Camada de Arquivos & Evidências"]
+        P[Pastas do SharePoint / Bancada]
+        P1[(Laudos em PDF e Dados Brutos)]
+        P2[(Certificados RBC e Mapas)]
+        P --- P1
+        P --- P2
+    end
+
+    subgraph AUTOMACAO["2. Camada de Automação (Power Automate)"]
+        F1[Fluxo por Evento: Monitor de Pastas]
+        F2[Fluxo Agendado: Verificador de SLA]
+        P -->|Novo arquivo salvo| F1
+    end
+
+    subgraph DADOS["3. Camada de Dados & Rastreabilidade"]
+        A[Microsoft Lists / SharePoint List]
+        A1[(Trilha de Auditoria & Versões)]
+        F1 -->|Baixa Automática + Link do Laudo| A
         A --- A1
-        A --- A2
     end
 
-    subgraph AUTOMACAO["2. Camada de Automação & Notificação"]
-        B[Power Automate Cloud Flow]
-        B1{Verifica SLA diariamente}
-        B --> B1
-        B1 -->|Vence em breve ou Atrasado| C[Adaptive Cards no Microsoft Teams]
-    end
-
-    subgraph INTERACAO["3. Camada de Interação & IA"]
+    subgraph INTERACAO["4. Camada de Notificação & IA"]
+        A -->|Consulta pendências| F2
+        F2 -->|Vence em breve ou Atrasado| C[Adaptive Cards no Microsoft Teams]
         D[Copilot Studio / Copilot Agent]
-        C -->|Botão: Em Progresso / Finalizado| A
         D -->|Consultas em Linguagem Natural| A
+        D -->|Acesso aos Documentos| P
     end
 
-    subgraph ANALISE["4. Camada Analítica"]
+    subgraph ANALISE["5. Camada Analítica"]
         E[Power BI Service / Desktop]
         A -->|Conexão Nativa OData| E
         E --> F[Dashboard com Semáforos e SLA]
     end
-
-    A --> B
 ```
 
 ---
@@ -78,25 +84,28 @@ A lista principal foi desenhada para atender aos requisitos de auditoria de acre
 | `Responsavel_Cargo` | Texto / Usuário | Responsável técnico pela execução | `Biomédico Rotina Bioquímica` |
 | `Data_Prevista` | Data | Data limite calculada para conclusão (SLA) | `2026-11-18` |
 | `Status` | Escolha | Situação operacional do controle | `Pendente`, `Em Progresso`, `Concluído`, `Atrasado` |
-| `Data_Conclusao` | Data e Hora | Carimbo de data/hora do encerramento | `2026-11-18 07:45` |
-| `Evidencia_Anexo` | Anexos | PDF de laudo, certificado RBC ou gráfico | `Mapa_Levey_Jennings.pdf` |
+| `Data_Conclusao` | Data e Hora | Carimbo de data/hora do encerramento (capturado pelo arquivo) | `2026-11-18 07:45` |
+| `Evidencia_Anexo` | Anexos / Link | PDF de laudo, certificado RBC ou link direto na pasta SharePoint | `Mapa_Levey_Jennings.pdf` |
 | `Acao_Corretiva_Obs` | Texto Multilinha | Justificativa ou conduta frente a desvios | `Dentro da faixa aceitável (1s).` |
 
 ---
 
 ## Automação e Agente Copilot
 
-### Rotina Diária no Power Automate
+### 1. Baixa Automática por Monitoramento de Pastas (Power Automate)
+* **Gatilho:** Novo laudo ou arquivo de dados brutos adicionado à pasta da bancada no SharePoint.
+* **Processamento:** O fluxo identifica o procedimento pendente, altera o status para `Concluído`, registra a data/hora oficial e vincula a evidência.
+* **Benefício:** Zero esforço manual de digitação na bancada e conformidade auditável em tempo real.
+
+### 2. Rotina Diária de SLA e Alertas no Microsoft Teams
 1. **Gatilho:** Recorrência diária às 07:00 (horário de abertura do laboratório).
 2. **Consulta OData na Lista:**
    ```text
    Status ne 'Concluído' and Data_Prevista le '@{addDays(utcNow(), 2, 'yyyy-MM-dd')}'
    ```
-3. **Ação:** Envio de um **Adaptive Card** no canal do Microsoft Teams com as ações:
-   * **Marcar como Em Progresso:** Notifica a equipe que o controle já está em processamento na bancada.
-   * **Concluir:** Abre um pop-up simples para registrar a data/hora e anexar o laudo comprobatório.
+3. **Ação:** Envio de um **Adaptive Card** no canal do Microsoft Teams com alertas de pendências ou manutenções próximas ao vencimento.
 
-### Consultas com Copilot Agent
+### 3. Consultas com Copilot Agent
 Integrado ao Microsoft 365, o agente permite perguntas como:
 * *"Quais manutenções preventivas semestrais vencem neste mês?"*
 * *"O controle de temperatura da geladeira de reagentes 01 já foi registrado hoje?"*
